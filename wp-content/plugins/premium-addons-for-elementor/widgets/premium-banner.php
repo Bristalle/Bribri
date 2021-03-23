@@ -10,8 +10,8 @@ use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Control_Media;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
@@ -811,8 +811,8 @@ class Premium_Banner extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-banner-ib-desc .premium_banner_title' => 'color: {{VALUE}};',
@@ -825,7 +825,7 @@ class Premium_Banner extends Widget_Base {
 			array(
 				'name'     => 'premium_banner_title_typography',
 				'selector' => '{{WRAPPER}} .premium-banner-ib-desc .premium_banner_title',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 			)
 		);
 
@@ -882,8 +882,8 @@ class Premium_Banner extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-banner .premium_banner_content' => 'color: {{VALUE}};',
@@ -896,7 +896,7 @@ class Premium_Banner extends Widget_Base {
 			array(
 				'name'     => 'premium_banner_content_typhography',
 				'selector' => '{{WRAPPER}} .premium-banner .premium_banner_content',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 			)
 		);
 
@@ -941,8 +941,8 @@ class Premium_Banner extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-banner .premium-banner-link' => 'color: {{VALUE}};',
@@ -956,8 +956,8 @@ class Premium_Banner extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-banner .premium-banner-link:hover' => 'color: {{VALUE}};',
@@ -969,7 +969,7 @@ class Premium_Banner extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_banner_button_typhography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .premium-banner-link',
 			)
 		);
@@ -1147,7 +1147,7 @@ class Premium_Banner extends Widget_Base {
 			$banner_url = 'url' === $settings['premium_banner_link_selection'] ? $settings['premium_banner_link']['url'] : get_permalink( $settings['premium_banner_existing_link'] );
 
 			$image_html = '';
-			
+
 		if ( ! empty( $settings['premium_banner_image']['url'] ) ) {
 
 			$this->add_render_attribute(
@@ -1173,8 +1173,10 @@ class Premium_Banner extends Widget_Base {
 						<?php echo wp_kses_post( $image_html ); ?>
 					<?php if ( 'custom' === $settings['premium_banner_height'] ) : ?>
 						</div>
-					<?php endif;
-				endif; ?>
+						<?php
+					endif;
+				endif;
+				?>
 				<div class="premium-banner-ib-desc">
 					<?php if ( 'animation7' === $settings['premium_banner_image_animation'] || 'animation8' === $settings['premium_banner_image_animation'] ) : ?>
 						<div class="premium-banner-border">
@@ -1185,8 +1187,10 @@ class Premium_Banner extends Widget_Base {
 						</div>
 					<?php endif; ?>
 					<div class="premium-banner-desc-centered">
-						<?php echo wp_kses_post( $full_title );
-						if ( ! empty( $settings['premium_banner_description'] ) ) : ?>
+						<?php
+						echo wp_kses_post( $full_title );
+						if ( ! empty( $settings['premium_banner_description'] ) ) :
+							?>
 							<div class="premium-banner-ib-content premium_banner_content">
 								<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_banner_description' ) ); ?>>
 									<?php echo wp_kses_post( $settings['premium_banner_description'] ); ?>
@@ -1197,7 +1201,8 @@ class Premium_Banner extends Widget_Base {
 							<div class="premium-banner-read-more">
 								<a class="premium-banner-link" 
 								<?php
-								if ( ! empty( $banner_url ) ) : ?>
+								if ( ! empty( $banner_url ) ) :
+									?>
 									href="<?php echo esc_url( $banner_url ); ?>"<?php endif; ?>
 									<?php if ( ! empty( $settings['premium_banner_link']['is_external'] ) ) : ?>
 										target="_blank"
@@ -1211,9 +1216,11 @@ class Premium_Banner extends Widget_Base {
 						<?php endif; ?>
 					</div>
 				</div>
-				<?php if ( 'yes' === $settings['premium_banner_link_url_switch'] && ( ! empty( $settings['premium_banner_image_custom_link']['url'] ) || ! empty( $settings['premium_banner_image_existing_page_link'] ) ) ) {
+				<?php
+				if ( 'yes' === $settings['premium_banner_link_url_switch'] && ( ! empty( $settings['premium_banner_image_custom_link']['url'] ) || ! empty( $settings['premium_banner_image_existing_page_link'] ) ) ) {
 					echo wp_kses_post( $full_link );
-				} ?>
+				}
+				?>
 			</div>
 			<?php if ( 'yes' === $settings['premium_banner_responsive_switcher'] ) : ?>
 				<style>

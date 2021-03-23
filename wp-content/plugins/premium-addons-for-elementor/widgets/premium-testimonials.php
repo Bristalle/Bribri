@@ -1,8 +1,8 @@
 <?php
-
 /**
  * Premium Testimonials.
  */
+
 namespace PremiumAddons\Widgets;
 
 // Elementor Classes.
@@ -11,8 +11,8 @@ use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Control_Media;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Text_Shadow;
@@ -31,18 +31,46 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Testimonials extends Widget_Base {
 
+	/**
+	 * Retrieve Widget Name.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function get_name() {
 		return 'premium-addon-testimonials';
 	}
 
+	/**
+	 * Retrieve Widget Title.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function get_title() {
 		return sprintf( '%1$s %2$s', Helper_Functions::get_prefix(), __( 'Testimonial', 'premium-addons-for-elementor' ) );
 	}
 
+	/**
+	 * Retrieve Widget Icon.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string widget icon.
+	 */
 	public function get_icon() {
 		return 'pa-testimonials';
 	}
 
+	/**
+	 * Retrieve Widget Dependent CSS.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array CSS style handles.
+	 */
 	public function get_style_depends() {
 		return array(
 			'font-awesome-5-all',
@@ -50,10 +78,25 @@ class Premium_Testimonials extends Widget_Base {
 		);
 	}
 
+	/**
+	 * Retrieve Widget Categories.
+	 *
+	 * @since 1.5.1
+	 * @access public
+	 *
+	 * @return array Widget categories.
+	 */
 	public function get_categories() {
 		return array( 'premium-elements' );
 	}
 
+	/**
+	 * Retrieve Widget Support URL.
+	 *
+	 * @access public
+	 *
+	 * @return string support URL.
+	 */
 	public function get_custom_help_url() {
 		return 'https://premiumaddons.com/support/';
 	}
@@ -299,13 +342,14 @@ class Premium_Testimonials extends Widget_Base {
 			)
 		);
 
-		$doc1_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/why-im-not-able-to-see-elementor-font-awesome-5-icons-in-premium-add-ons', 'editor-page', 'wp-editor', 'get-support' );
+		$doc_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/why-im-not-able-to-see-elementor-font-awesome-5-icons-in-premium-add-ons', 'editor-page', 'wp-editor', 'get-support' );
+		$title   = __( 'I\'m not able to see Font Awesome icons in the widget »', 'premium-addons-for-elementor' );
 
 		$this->add_control(
 			'doc_1',
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => sprintf( __( '%1$s I\'m not able to see Font Awesome icons in the widget » %2$s', 'premium-addons-for-elementor' ), '<a href="https://premiumaddons.com/docs/why-im-not-able-to-see-elementor-font-awesome-5-icons-in-premium-add-ons/?utm_source=papro-dashboard&utm_medium=papro-editor&utm_campaign=papro-plugin" target="_blank" rel="noopener">', '</a>' ),
+				'raw'             => sprintf( '<a href="%s" target="_blank">%s</a>', $doc_url, $title ),
 				'content_classes' => 'editor-pa-doc',
 			)
 		);
@@ -369,8 +413,8 @@ class Premium_Testimonials extends Widget_Base {
 				'label'     => __( 'Border Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-testimonial-img-wrapper' => 'border-color: {{VALUE}};',
@@ -394,8 +438,8 @@ class Premium_Testimonials extends Widget_Base {
 				'label'     => __( 'Author Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-testimonial-person-name' => 'color: {{VALUE}};',
@@ -408,7 +452,7 @@ class Premium_Testimonials extends Widget_Base {
 			array(
 				'name'     => 'author_name_typography',
 				'label'    => __( 'Name Typograhy', 'premium-addons-for-elementor' ),
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-testimonial-person-name',
 			)
 		);
@@ -427,8 +471,8 @@ class Premium_Testimonials extends Widget_Base {
 				'label'     => __( 'Separator Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'separator' => 'before',
 				'condition' => array(
@@ -468,8 +512,8 @@ class Premium_Testimonials extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-testimonial-company-link' => 'color: {{VALUE}};',
@@ -481,7 +525,7 @@ class Premium_Testimonials extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'company_name_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-testimonial-company-link',
 			)
 		);
@@ -510,8 +554,8 @@ class Premium_Testimonials extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-testimonial-text-wrapper' => 'color: {{VALUE}};',
@@ -523,7 +567,7 @@ class Premium_Testimonials extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'content_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-testimonial-text-wrapper',
 			)
 		);
@@ -732,41 +776,45 @@ class Premium_Testimonials extends Widget_Base {
 		);
 
 		?>
-	
-	<div <?php echo $this->get_render_attribute_string( 'testimonial' ); ?>>
+
+	<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'testimonial' ) ); ?>>
 		<div class="premium-testimonial-container">
 			<i class="fa fa-quote-left premium-testimonial-upper-quote"></i>
 			<div class="premium-testimonial-content-wrapper">
 				<?php if ( ! empty( $image_src ) ) : ?>
-					<div <?php echo $this->get_render_attribute_string( 'img_wrap' ); ?>>
-						<img src="<?php echo $image_src; ?>" alt="<?php echo $alt; ?>" class="premium-testimonial-person-image">
+					<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'img_wrap' ) ); ?>>
+						<img src="<?php echo esc_url( $image_src ); ?>" alt="<?php echo esc_attr( $alt ); ?>" class="premium-testimonial-person-image">
 					</div>
 				<?php endif; ?>
 
 				<div class="premium-testimonial-text-wrapper">
-					<div <?php echo $this->get_render_attribute_string( 'premium_testimonial_content' ); ?>>
-						<?php echo $settings['premium_testimonial_content']; ?>
+					<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_testimonial_content' ) ); ?>>
+						<?php echo wp_kses_post( $settings['premium_testimonial_content'] ); ?>
 					</div>
 				</div>
 
 				<div class="premium-testimonial-author-info">
-					<<?php echo $person_title_tag; ?> class="premium-testimonial-person-name">
-						<span <?php echo $this->get_render_attribute_string( 'premium_testimonial_person_name' ); ?>><?php echo $settings['premium_testimonial_person_name']; ?></span>
-					</<?php echo $person_title_tag; ?>>
-					
+					<<?php echo wp_kses_post( $person_title_tag ); ?> class="premium-testimonial-person-name">
+						<span <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_testimonial_person_name' ) ); ?>>
+							<?php echo wp_kses_post( $settings['premium_testimonial_person_name'] ); ?>
+						</span>
+					</<?php echo wp_kses_post( $person_title_tag ); ?>>
+
 					<span class="premium-testimonial-separator"><?php echo esc_html( $settings['separator_text'] ); ?></span>
-					
-					<<?php echo $company_title_tag; ?> class="premium-testimonial-company-name">
-					<?php if ( $settings['premium_testimonial_company_link_switcher'] === 'yes' ) : ?>
-						<a class="premium-testimonial-company-link" href="<?php echo $settings['premium_testimonial_company_link']; ?>" target="_<?php echo $settings['premium_testimonial_link_target']; ?>">
-							<span <?php echo $this->get_render_attribute_string( 'premium_testimonial_company_name' ); ?>><?php echo $settings['premium_testimonial_company_name']; ?></span>
+
+					<<?php echo wp_kses_post( $company_title_tag ); ?> class="premium-testimonial-company-name">
+					<?php if ( 'yes' === $settings['premium_testimonial_company_link_switcher'] ) : ?>
+						<a class="premium-testimonial-company-link" href="<?php echo esc_url( $settings['premium_testimonial_company_link'] ); ?>" target="_<?php echo wp_kses_post( $settings['premium_testimonial_link_target'] ); ?>">
+							<span <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_testimonial_company_name' ) ); ?>>
+								<?php echo wp_kses_post( $settings['premium_testimonial_company_name'] ); ?>
+							</span>
 						</a>
 					<?php else : ?>
-						<span class="premium-testimonial-company-link" <?php echo $this->get_render_attribute_string( 'premium_testimonial_company_name' ); ?>>
-							<?php echo $settings['premium_testimonial_company_name']; ?>
+						<span class="premium-testimonial-company-link" <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_testimonial_company_name' ) ); ?>>
+							<?php echo wp_kses_post( $settings['premium_testimonial_company_name'] ); ?>
 						</span>
 					<?php endif; ?>
-					</<?php echo $company_title_tag; ?>>
+					</<?php echo wp_kses_post( $company_title_tag ); ?>>
 				</div>
 			</div>
 			<i class="fa fa-quote-right premium-testimonial-lower-quote"></i>
@@ -787,12 +835,12 @@ class Premium_Testimonials extends Widget_Base {
 	protected function content_template() {
 		?>
 		<#
-		
+
 			view.addInlineEditingAttributes('premium_testimonial_person_name');
 			view.addInlineEditingAttributes('premium_testimonial_company_name');
 			view.addInlineEditingAttributes('premium_testimonial_content', 'advanced');
 			view.addRenderAttribute('premium_testimonial_company_name', 'class', 'premium-testimonial-company-link');
-			
+
 			var personTag = settings.premium_testimonial_person_name_size,
 				companyTag = settings.premium_testimonial_company_name_size,
 				imageSrc = '',
@@ -802,7 +850,7 @@ class Premium_Testimonials extends Widget_Base {
 			if( '' != settings.premium_testimonial_person_image.url ) {
 				imageSrc = settings.premium_testimonial_person_image.url;
 			}
-		
+
 			view.addRenderAttribute('testimonial', 'class', [
 				'premium-testimonial-box'
 			]);
@@ -811,10 +859,10 @@ class Premium_Testimonials extends Widget_Base {
 				'premium-testimonial-img-wrapper',
 				settings.premium_testimonial_person_image_shape
 			]);
-			
-		
+
+
 		#>
-		
+
 			<div {{{ view.getRenderAttributeString('testimonial') }}}>
 				<div class="premium-testimonial-container">
 					<i class="fa fa-quote-left premium-testimonial-upper-quote"></i>
@@ -827,30 +875,30 @@ class Premium_Testimonials extends Widget_Base {
 						<div class="premium-testimonial-text-wrapper">
 							<div {{{ view.getRenderAttributeString('premium_testimonial_content') }}}>{{{ settings.premium_testimonial_content }}}</div>
 						</div>
-						
+
 						<div class="premium-testimonial-author-info">
 							<{{{personTag}}} class="premium-testimonial-person-name">
 								<span {{{ view.getRenderAttributeString('premium_testimonial_person_name') }}}>
 								{{{ settings.premium_testimonial_person_name }}}
 								</span>
 							</{{{personTag}}}>
-							
+
 							<span class="premium-testimonial-separator"> {{{ settings.separator_text }}} </span>
-							
+
 							<{{{companyTag}}} class="premium-testimonial-company-name">
 								<a href="{{ settings.premium_testimonial_company_link }}" {{{ view.getRenderAttributeString('premium_testimonial_company_name') }}}>
 									{{{ settings.premium_testimonial_company_name }}}
 								</a>
 							</{{{companyTag}}}>
 						</div>
-						
+
 					</div>
-					
+
 					<i class="fa fa-quote-right premium-testimonial-lower-quote"></i>
-					
+
 				</div>
 			</div>
-		
+
 		<?php
 	}
 

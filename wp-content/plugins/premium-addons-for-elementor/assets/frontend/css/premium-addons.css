@@ -3266,13 +3266,30 @@ button.premium-modal-box-modal-close {
 .premium-blog-clear-fix {
   clear: both; }
 
-/*Post Format Container*/
+.premium-blog-masked .premium-blog-thumbnail-container {
+  position: relative;
+  overflow: visible; }
+  .premium-blog-masked .premium-blog-thumbnail-container svg {
+    position: absolute;
+    height: 100px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    fill: #f5f5f5;
+    z-index: 99; }
+    .premium-blog-masked .premium-blog-thumbnail-container svg.premium-blog-shape-divider-svg {
+      -webkit-transform: rotate(180deg);
+          -ms-transform: rotate(180deg);
+              transform: rotate(180deg); }
+
+.premium-blog-masked .premium-blog-author-thumbnail,
+.premium-blog-masked .premium-blog-skin-banner .premium-blog-content-wrapper {
+  z-index: 999 !important; }
+
 .premium-blog-format-link {
   padding: 5px;
   line-height: 0; }
 
-/*Post Format Icon*/
-/*Post Format Content Margin */
 .premium-blog-entry-meta {
   line-height: 1.3em;
   font-size: 12px;

@@ -1,4 +1,5 @@
 (function () {
+    var $ = jQuery;
 
     var selectOptions = elementor.modules.controls.Select2.extend({
         onBeforeRender: function () {

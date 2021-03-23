@@ -5,7 +5,7 @@ Donate Link: https://premiumaddons.com/?utm_source=wp-repo&utm_medium=link&utm_c
 Requires at least: 5.0
 Tested Up To: 5.7
 Requires PHP: 5.4
-Stable Tag: 4.2.5
+Stable Tag: 4.2.6
 License: GPL v3.0
 License URI: https://opensource.org/licenses/GPL-3.0
 
@@ -24,7 +24,7 @@ You can now use [Lottie Animations in ALL our Elementor widgets](https://premium
 NEW: Ever-growing [Elementor Section Templates Library](https://premiumaddons.com/premium-templates-for-elementor/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) Available on both Premium Addons Free and PRO versions. Browse, preview, and insert the template you like in your page/post with just ONE click.
 
 ### NEW: Equal Height Feature
-Now, you can make your columns, widgets or any selector you want the same height with just ONE click using Elementor Equal Height feature in section settings -> Advanced tab.
+Now, you can make your columns, widgets or any selector you want the same height with just ONE click using [Elementor Equal Height feature](https://premiumaddons.com/docs/elementor-column-equal-height//?utm_source=wp-repo&utm_medium=link&utm_campaign=readme) in section settings -> Advanced tab.
 
 ### NEW: Cross-Domain Copy N’ Paste
 Now, you will have the ability to copy and paste any Elementor content from a website to another with just 2 clicks, copy from here and paste there, woohoo that’s it!. Check the documentation article from [here](https://premiumaddons.com/docs/how-to-copy-elementor-content-from-site-to-another-using-pa-copy-paste-feature/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
@@ -190,6 +190,13 @@ Premium Addons for Elementor is 100% Ads Free, Ads can only be detected from You
 14. Premium Progress Bar Widget for Elementor
 
 == Changelog ==
+
+= 4.2.6 =
+
+- Tweak: Added Shape Divider option for featured image in Blog widget.
+- Tweak: Added Author Image Position control for Cards skin in Blog widget.
+- Tweak: Added Text Stroke option in Fancy Text widget.
+- Tweak: Code refactored for better performance and security.
 
 = 4.2.5 =
 

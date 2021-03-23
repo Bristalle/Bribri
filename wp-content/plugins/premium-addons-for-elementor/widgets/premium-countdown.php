@@ -9,8 +9,8 @@ namespace PremiumAddons\Widgets;
 use Elementor\Modules\DynamicTags\Module as TagsModule;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
@@ -503,8 +503,8 @@ class Premium_Countdown extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-amount' => 'color: {{VALUE}};',
@@ -516,7 +516,7 @@ class Premium_Countdown extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'premium_countdown_digit_typo',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'    => Typography::TYPOGRAPHY_3,
 				'selector'  => '{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-amount',
 				'separator' => 'after',
 			)
@@ -528,8 +528,8 @@ class Premium_Countdown extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-amount' => 'background-color: {{VALUE}};',
@@ -601,8 +601,8 @@ class Premium_Countdown extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-period' => 'color: {{VALUE}};',
@@ -614,7 +614,7 @@ class Premium_Countdown extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_countdown_unit_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .countdown .pre_countdown-section .pre_countdown-period',
 			)
 		);
@@ -690,8 +690,8 @@ class Premium_Countdown extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .pre-countdown_separator' => 'color: {{VALUE}};',
@@ -730,8 +730,8 @@ class Premium_Countdown extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-countdown-exp-message' => 'color: {{VALUE}}',
@@ -754,7 +754,7 @@ class Premium_Countdown extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_countdown_message_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 				'selector' => '{{WRAPPER}} .premium-countdown-exp-message',
 			)
 		);

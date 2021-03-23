@@ -9,8 +9,8 @@ namespace PremiumAddons\Widgets;
 use PremiumAddons\Includes;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
@@ -29,8 +29,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Dual_Header extends Widget_Base {
 
-	protected $template_instance;
-
 	/**
 	 * Get Elementor Helper Instance.
 	 *
@@ -38,7 +36,8 @@ class Premium_Dual_Header extends Widget_Base {
 	 * @access public
 	 */
 	public function getTemplateInstance() {
-		return $this->template_instance = Premium_Template_Tags::getInstance();
+		$this->template_instance = Premium_Template_Tags::getInstance();
+		return $this->template_instance;
 	}
 
 	/**
@@ -510,7 +509,7 @@ class Premium_Dual_Header extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'first_header_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-dual-header-first-span',
 			)
 		);
@@ -544,8 +543,8 @@ class Premium_Dual_Header extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'condition' => array(
 					'premium_dual_header_first_back_clip' => 'color',
@@ -706,7 +705,7 @@ class Premium_Dual_Header extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'second_header_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-dual-header-second-header',
 			)
 		);
@@ -740,8 +739,8 @@ class Premium_Dual_Header extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'condition' => array(
 					'premium_dual_header_second_back_clip' => 'color',
@@ -907,8 +906,8 @@ class Premium_Dual_Header extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-bg-text:before' => 'color: {{VALUE}}',
@@ -920,7 +919,7 @@ class Premium_Dual_Header extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'background_text_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-title-bg-text:before',
 			)
 		);

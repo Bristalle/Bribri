@@ -10,7 +10,7 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Group_Control_Border;
 
 // PremiumAddons Classes.
@@ -823,8 +823,8 @@ class Premium_Carousel extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-carousel-wrapper .slick-arrow' => 'color: {{VALUE}};',
@@ -879,8 +879,8 @@ class Premium_Carousel extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-carousel-wrapper .slick-arrow:hover' => 'color: {{VALUE}};',
@@ -1007,8 +1007,8 @@ class Premium_Carousel extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} ul.slick-dots li' => 'color: {{VALUE}}',
@@ -1023,8 +1023,8 @@ class Premium_Carousel extends Widget_Base {
 				'label'     => __( 'Active Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} ul.slick-dots li.slick-active' => 'color: {{VALUE}}',

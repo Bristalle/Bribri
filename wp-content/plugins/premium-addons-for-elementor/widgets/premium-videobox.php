@@ -12,8 +12,8 @@ use Elementor\Utils;
 use Elementor\Embed;
 use Elementor\Icons_Manager;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
@@ -1458,8 +1458,8 @@ class Premium_Videobox extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-video-box-play-icon'  => 'color: {{VALUE}};',
@@ -1473,8 +1473,8 @@ class Premium_Videobox extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-video-box-play-icon-container:hover .premium-video-box-play-icon'  => 'color: {{VALUE}};',
@@ -1588,8 +1588,8 @@ class Premium_Videobox extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-video-box-text' => 'color: {{VALUE}};',
@@ -1603,8 +1603,8 @@ class Premium_Videobox extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-video-box-description-container:hover .premium-video-box-text'   => 'color: {{VALUE}};',
@@ -1616,7 +1616,7 @@ class Premium_Videobox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'text_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-video-box-text',
 			)
 		);
@@ -1627,8 +1627,8 @@ class Premium_Videobox extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-video-box-description-container'   => 'background-color: {{VALUE}};',
@@ -1704,7 +1704,7 @@ class Premium_Videobox extends Widget_Base {
 				),
 			)
 		);
-		
+
 		$this->add_responsive_control(
 			'sticky_video_margin',
 			array(
@@ -1827,8 +1827,8 @@ class Premium_Videobox extends Widget_Base {
 					'{{WRAPPER}} .premium-video-box-sticky-close i' => 'color: {{VALUE}}!important',
 				),
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 			)
 		);
@@ -1882,8 +1882,8 @@ class Premium_Videobox extends Widget_Base {
 					'{{WRAPPER}} .premium-video-box-sticky-infobar' => 'color: {{VALUE}}',
 				),
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'condition' => array(
 					'sticky_info_bar_switch' => 'yes',
@@ -1895,7 +1895,7 @@ class Premium_Videobox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'info_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .premium-video-box-sticky-infobar',
 				'condition' => array(
 					'sticky_info_bar_switch' => 'yes',

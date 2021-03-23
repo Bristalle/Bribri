@@ -134,7 +134,7 @@ class Module {
 		$element->add_control(
 			'premium_eq_height_update',
 			array(
-				'label' => '<div class="elementor-update-preview" style="background-color: #fff;"><div class="elementor-update-preview-title">Update changes to page</div><div class="elementor-update-preview-button-wrapper"><button class="elementor-update-preview-button elementor-button elementor-button-success">Apply</button></div></div>',
+				'label' => '<div class="elementor-update-preview editor-pa-preview-update" style="background-color: #fff;"><div class="elementor-update-preview-title">Update changes to page</div><div class="elementor-update-preview-button-wrapper"><button class="elementor-update-preview-button elementor-button elementor-button-success">Apply</button></div></div>',
 				'type'  => Controls_Manager::RAW_HTML,
 			)
 		);
@@ -214,6 +214,18 @@ class Module {
 				'condition'   => array(
 					'premium_eq_height_switcher' => 'yes',
 				),
+			)
+        );
+        
+        $url     = 'https://premiumaddons.com/docs/elementor-column-equal-height/';
+		$doc_url = Helper_Functions::get_campaign_link( $url, 'editor-page', 'wp-editor', 'get-support' );
+
+		$element->add_control(
+			'equal_height_notice',
+			array(
+				'type'            => Controls_Manager::RAW_HTML,
+				'raw'             => sprintf( '<a href="%s" target="_blank">%s</a>', $doc_url, __( 'How to use Premium Equal Height option »', 'premium-addons-for-elementor' ) ),
+				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
 			)
 		);
 

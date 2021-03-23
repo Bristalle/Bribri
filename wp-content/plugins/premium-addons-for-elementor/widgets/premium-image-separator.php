@@ -1,8 +1,8 @@
 <?php
-
 /**
  * Premium Image Separator.
  */
+
 namespace PremiumAddons\Widgets;
 
 // Elementor Classes.
@@ -11,7 +11,7 @@ use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Control_Media;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Icons_Manager;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Text_Shadow;
@@ -29,44 +29,108 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Image_Separator extends Widget_Base {
 
-	protected $templateInstance;
-
+	/**
+	 * Get Elementor Helper Instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function getTemplateInstance() {
-		return $this->templateInstance = Premium_Template_Tags::getInstance();
+		$this->template_instance = Premium_Template_Tags::getInstance();
+		return $this->template_instance;
 	}
 
+	/**
+	 * Retrieve Widget Name.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function get_name() {
 		return 'premium-addon-image-separator';
 	}
 
+	/**
+	 * Retrieve Widget Title.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function get_title() {
 		return sprintf( '%1$s %2$s', Helper_Functions::get_prefix(), __( 'Image Separator', 'premium-addons-for-elementor' ) );
 	}
 
+	/**
+	 * Retrieve Widget Dependent CSS.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array CSS style handles.
+	 */
 	public function get_style_depends() {
 		return array(
 			'premium-addons',
 		);
 	}
 
+	/**
+	 * Retrieve Widget Dependent JS.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array JS script handles.
+	 */
 	public function get_script_depends() {
 		return array(
 			'lottie-js',
 		);
 	}
 
+	/**
+	 * Retrieve Widget Icon.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string widget icon.
+	 */
 	public function get_icon() {
 		return 'pa-image-separator';
 	}
 
+	/**
+	 * Retrieve Widget Categories.
+	 *
+	 * @since 1.5.1
+	 * @access public
+	 *
+	 * @return array Widget categories.
+	 */
 	public function get_categories() {
 		return array( 'premium-elements' );
 	}
 
+	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
 	public function get_keywords() {
 		return array( 'divider', 'section', 'shape' );
 	}
 
+	/**
+	 * Retrieve Widget Support URL.
+	 *
+	 * @access public
+	 *
+	 * @return string support URL.
+	 */
 	public function get_custom_help_url() {
 		return 'https://premiumaddons.com/support/';
 	}
@@ -420,8 +484,8 @@ class Premium_Image_Separator extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-separator-container i' => 'color: {{VALUE}}',
@@ -438,8 +502,8 @@ class Premium_Image_Separator extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-separator-container i:hover' => 'color: {{VALUE}}',
@@ -456,8 +520,8 @@ class Premium_Image_Separator extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-separator-container i' => 'background-color: {{VALUE}}',
@@ -474,8 +538,8 @@ class Premium_Image_Separator extends Widget_Base {
 				'label'     => __( 'Hover Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-separator-container i:hover' => 'background-color: {{VALUE}}',
@@ -502,6 +566,7 @@ class Premium_Image_Separator extends Widget_Base {
 			Group_Control_Text_Shadow::get_type(),
 			array(
 				'name'      => 'separator_shadow',
+				'label'     => __( 'Icon Shadow', 'premium-addons-for-elementor' ),
 				'selector'  => '{{WRAPPER}} .premium-image-separator-container i',
 				'condition' => array(
 					'separator_type' => 'icon',
@@ -586,16 +651,16 @@ class Premium_Image_Separator extends Widget_Base {
 
 	<div class="premium-image-separator-container">
 		<?php if ( 'image' === $type ) : ?>
-			<img src="<?php echo $settings['premium_image_separator_image']['url']; ?>" alt="<?php echo $alt; ?>">
+			<img src="<?php echo esc_attr( $settings['premium_image_separator_image']['url'] ); ?>" alt="<?php echo esc_attr( $alt ); ?>">
 			<?php
 		elseif ( 'icon' === $type ) :
 			Icons_Manager::render_icon( $settings['separator_icon'], array( 'aria-hidden' => 'true' ) );
 		else :
 			?>
-			<div <?php echo $this->get_render_attribute_string( 'separator_lottie' ); ?>></div>
+			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'separator_lottie' ) ); ?>></div>
 		<?php endif; ?>
-		<?php if ( $settings['premium_image_separator_link_switcher'] === 'yes' && ! empty( $url ) ) : ?>
-			<a <?php echo $this->get_render_attribute_string( 'link' ); ?>></a>
+		<?php if ( 'yes' === $settings['premium_image_separator_link_switcher'] && ! empty( $url ) ) : ?>
+			<a <?php echo wp_kses_post( $this->get_render_attribute_string( 'link' ) ); ?>></a>
 		<?php endif; ?>
 	</div>
 		<?php
@@ -614,7 +679,7 @@ class Premium_Image_Separator extends Widget_Base {
 		<#
 			var type        = settings.separator_type,
 				linkSwitch  = settings.premium_image_separator_link_switcher;
-				
+
 			if( 'image' === type ) {
 				var imgUrl = settings.premium_image_separator_image.url;
 			} else if ( 'icon' === type ) {
@@ -628,7 +693,7 @@ class Premium_Image_Separator extends Widget_Base {
 					'data-lottie-reverse': settings.lottie_reverse,
 					'data-lottie-hover': settings.lottie_hover
 				});
-				
+
 			}
 
 			if( 'yes' === linkSwitch ) {
@@ -642,7 +707,7 @@ class Premium_Image_Separator extends Widget_Base {
 				if( '' !== linkTitle ) {
 					view.addRenderAttribute( 'link', 'title', linkTitle );
 				}
-				
+
 			}
 
 		#>
@@ -659,7 +724,7 @@ class Premium_Image_Separator extends Widget_Base {
 				<a {{{ view.getRenderAttributeString( 'link' ) }}}></a>
 			<# } #>
 		</div>
-		
+
 		<?php
 	}
 }

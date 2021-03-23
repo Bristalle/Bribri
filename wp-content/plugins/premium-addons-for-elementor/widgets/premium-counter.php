@@ -11,8 +11,8 @@ use Elementor\Utils;
 use Elementor\Icons_Manager;
 use Elementor\Control_Media;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
@@ -472,8 +472,8 @@ class Premium_Counter extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-counter-area .premium-counter-icon .icon i' => 'color: {{VALUE}};',
@@ -560,8 +560,8 @@ class Premium_Counter extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'condition' => array(
 					'premium_counter_icon_style!' => 'simple',
@@ -679,8 +679,8 @@ class Premium_Counter extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-counter-area .premium-counter-title' => 'color: {{VALUE}};',
@@ -692,7 +692,7 @@ class Premium_Counter extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_counter_title_typho',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-counter-area .premium-counter-title',
 			)
 		);
@@ -776,8 +776,8 @@ class Premium_Counter extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-counter-area .premium-counter-init' => 'color: {{VALUE}};',
@@ -789,7 +789,7 @@ class Premium_Counter extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'premium_counter_value_typho',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .premium-counter-area .premium-counter-init',
 				'separator' => 'after',
 			)
@@ -866,8 +866,8 @@ class Premium_Counter extends Widget_Base {
 				'label'     => __( 'Prefix Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-counter-area span#prefix' => 'color: {{VALUE}}',
@@ -879,7 +879,7 @@ class Premium_Counter extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'premium_counter_prefix_typo',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .premium-counter-area span#prefix',
 				'separator' => 'after',
 			)
@@ -891,8 +891,8 @@ class Premium_Counter extends Widget_Base {
 				'label'     => __( 'Suffix Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-counter-area span#suffix' => 'color: {{VALUE}}',
@@ -904,7 +904,7 @@ class Premium_Counter extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'premium_counter_suffix_typo',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .premium-counter-area span#suffix',
 				'separator' => 'after',
 			)

@@ -9,8 +9,8 @@ namespace PremiumAddons\Widgets;
 use Elementor\Icons_Manager;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
@@ -679,7 +679,7 @@ class Premium_Image_Button extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_image_button_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-image-button',
 			)
 		);
@@ -699,8 +699,8 @@ class Premium_Image_Button extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-button .premium-image-button-text-icon-wrapper span'   => 'color: {{VALUE}};',
@@ -714,8 +714,8 @@ class Premium_Image_Button extends Widget_Base {
 				'label'     => __( 'Icon Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-button-text-icon-wrapper i'   => 'color: {{VALUE}};',
@@ -840,8 +840,8 @@ class Premium_Image_Button extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-button:hover .premium-image-button-text-icon-wrapper span'   => 'color: {{VALUE}};',
@@ -858,8 +858,8 @@ class Premium_Image_Button extends Widget_Base {
 				'label'     => __( 'Icon Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-button:hover .premium-image-button-text-icon-wrapper i'   => 'color: {{VALUE}};',
@@ -878,8 +878,8 @@ class Premium_Image_Button extends Widget_Base {
 				'label'     => __( 'Icon Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-button:hover .premium-image-button-style4-icon-wrapper'   => 'color: {{VALUE}};',
@@ -897,8 +897,8 @@ class Premium_Image_Button extends Widget_Base {
 				'label'     => __( 'Overlay Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-button-diagonal-effect-top:before, {{WRAPPER}} .premium-image-button-diagonal-effect-bottom:before, {{WRAPPER}} .premium-image-button-diagonal-effect-left:before, {{WRAPPER}} .premium-image-button-diagonal-effect-right:before'   => 'background-color: {{VALUE}};',
@@ -915,8 +915,8 @@ class Premium_Image_Button extends Widget_Base {
 				'label'     => __( 'Overlay Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-image-button-overlap-effect-horizontal:before, {{WRAPPER}} .premium-image-button-overlap-effect-vertical:before'   => 'background-color: {{VALUE}};',
@@ -942,8 +942,8 @@ class Premium_Image_Button extends Widget_Base {
 				'label'     => __( 'Overlay Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'condition' => array(
 					'premium_image_button_overlay_switcher' => 'yes',

@@ -9,8 +9,8 @@ namespace PremiumAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
@@ -551,11 +551,14 @@ class Premium_Vscroll extends Widget_Base {
 			)
 		);
 
+		$doc_url = Helper_Functions::get_campaign_link( 'https://premiumaddons.com/docs/how-to-create-elementor-template-to-be-used-with-premium-addons', 'editor-page', 'wp-editor', 'get-support' );
+		$title   = __( 'How to create an Elementor template to be used in Premium Vertical Scroll »', 'premium-addons-for-elementor' );
+
 		$this->add_control(
 			'doc_1',
 			array(
 				'type'            => Controls_Manager::RAW_HTML,
-				'raw'             => sprintf( __( '%1$s How to create an Elementor template to be used in Premium Vertical Scroll » %2$s', 'premium-addons-for-elementor' ), '<a href="https://premiumaddons.com/docs/how-to-create-elementor-template-to-be-used-with-premium-addons/?utm_source=pa-dashboard&utm_medium=pa-editor&utm_campaign=pa-plugin" target="_blank" rel="noopener">', '</a>' ),
+				'raw'             => sprintf( '<a href="%s" target="_blank">%s</a>', $doc_url, $title ),
 				'content_classes' => 'editor-pa-doc',
 			)
 		);
@@ -591,8 +594,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Tooltips Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-tooltip' => 'color: {{VALUE}};',
@@ -607,7 +610,7 @@ class Premium_Vscroll extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'tooltips_typography',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .premium-vscroll-tooltip span',
 				'condition' => array(
 					'dots_tooltips_switcher' => 'yes',
@@ -621,8 +624,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Tooltips Background', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-tooltip' => 'background-color: {{VALUE}};',
@@ -717,8 +720,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Dots Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-dots .premium-vscroll-nav-link span'  => 'background-color: {{VALUE}};',
@@ -732,8 +735,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Active Dot Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-dots li.active .premium-vscroll-nav-link span'  => 'background-color: {{VALUE}};',
@@ -747,8 +750,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Dots Border Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-dots .premium-vscroll-nav-link span'  => 'border-color: {{VALUE}};',
@@ -783,8 +786,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-dots' => 'background-color: {{VALUE}}',
@@ -853,8 +856,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-nav-menu .premium-vscroll-nav-item .premium-vscroll-nav-link'  => 'color: {{VALUE}}',
@@ -868,8 +871,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Text Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-nav-menu .premium-vscroll-nav-item .premium-vscroll-nav-link:hover'  => 'color: {{VALUE}}',
@@ -883,8 +886,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-nav-menu .premium-vscroll-nav-item'  => 'background-color: {{VALUE}}',
@@ -916,8 +919,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-nav-menu .premium-vscroll-nav-item.active .premium-vscroll-nav-link'  => 'color: {{VALUE}}',
@@ -931,8 +934,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Text Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-nav-menu .premium-vscroll-nav-item.active .premium-vscroll-nav-link:hover'  => 'color: {{VALUE}}',
@@ -946,8 +949,8 @@ class Premium_Vscroll extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-vscroll-nav-menu .premium-vscroll-nav-item.active'  => 'background-color: {{VALUE}}',

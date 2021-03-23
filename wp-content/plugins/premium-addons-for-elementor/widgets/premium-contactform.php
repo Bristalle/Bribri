@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Premium Contact Form 7.
+ * Premium Blog.
  */
 
 namespace PremiumAddons\Widgets;
@@ -9,8 +8,8 @@ namespace PremiumAddons\Widgets;
 // Elementor Classes.
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
@@ -440,8 +439,8 @@ class Premium_Contactform extends Widget_Base {
 				'label'     => __( 'Default Font Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-cf7-container, {{WRAPPER}} .premium-cf7-container label' => 'color: {{VALUE}};',
@@ -453,7 +452,7 @@ class Premium_Contactform extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_elements_contact_form_default_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-cf7-container',
 			)
 		);
@@ -473,8 +472,8 @@ class Premium_Contactform extends Widget_Base {
 				'label'     => __( 'Input Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-cf7-container input.wpcf7-text, {{WRAPPER}} .premium-cf7-container textarea.wpcf7-textarea' => 'color: {{VALUE}};',
@@ -486,7 +485,7 @@ class Premium_Contactform extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_elements_contact_form_field_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-cf7-container input.wpcf7-text, {{WRAPPER}} .premium-cf7-container textarea.wpcf7-textarea',
 			)
 		);
@@ -518,7 +517,7 @@ class Premium_Contactform extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'section_title_premium_btn_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-cf7-container input.wpcf7-submit',
 			)
 		);
@@ -556,8 +555,8 @@ class Premium_Contactform extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-cf7-container input.wpcf7-submit' => 'background-color: {{VALUE}};',
@@ -647,6 +646,12 @@ class Premium_Contactform extends Widget_Base {
 
 	}
 
+	/**
+	 * Get WPCF Forms
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	protected function get_wpcf_forms() {
 
 		if ( ! class_exists( 'WPCF7_ContactForm' ) ) {

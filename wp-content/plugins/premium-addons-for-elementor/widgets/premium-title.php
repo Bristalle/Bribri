@@ -11,8 +11,8 @@ use Elementor\Utils;
 use Elementor\Icons_Manager;
 use Elementor\Controls_Manager;
 use Elementor\Control_Media;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
@@ -31,8 +31,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Title extends Widget_Base {
 
-	protected $template_instance;
-
 	/**
 	 * Get Elementor Helper Instance.
 	 *
@@ -40,7 +38,8 @@ class Premium_Title extends Widget_Base {
 	 * @access public
 	 */
 	public function getTemplateInstance() {
-		return $this->template_instance = Premium_Template_Tags::getInstance();
+		$this->template_instance = Premium_Template_Tags::getInstance();
+		return $this->template_instance;
 	}
 
 	/**
@@ -759,8 +758,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-header' => 'color: {{VALUE}}',
@@ -800,7 +799,7 @@ class Premium_Title extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'title_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-title-header',
 			)
 		);
@@ -822,8 +821,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-style2' => 'background-color: {{VALUE}};',
@@ -840,8 +839,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-style3' => 'background-color: {{VALUE}};',
@@ -858,8 +857,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Line Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-style5' => 'border-bottom: 2px solid {{VALUE}};',
@@ -887,8 +886,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Line Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-style6' => 'border-bottom: 2px solid {{VALUE}};',
@@ -905,8 +904,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Triangle Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-style6:before' => 'border-bottom-color: {{VALUE}};',
@@ -923,8 +922,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Stripe Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-style7-stripe' => 'background-color: {{VALUE}};',
@@ -1085,8 +1084,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-icon' => 'color: {{VALUE}};',
@@ -1206,8 +1205,8 @@ class Premium_Title extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-title-bg-text:before' => 'color: {{VALUE}}',
@@ -1219,7 +1218,7 @@ class Premium_Title extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'background_text_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-title-bg-text:before',
 			)
 		);

@@ -10,9 +10,9 @@ use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Control_Media;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
+use Elementor\Core\Schemes\Color;
 use Elementor\Repeater;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Css_Filter;
@@ -677,7 +677,7 @@ class Premium_Person extends Widget_Base {
 				'raw'             => __( 'Please note that Phone Number icon will show only on mobile devices.', 'premium-addons-for-elementor' ),
 				'type'            => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
-				'condition'   => array(
+				'condition'       => array(
 					'premium_person_social_enable' => 'yes',
 				),
 			)
@@ -958,7 +958,7 @@ class Premium_Person extends Widget_Base {
 				'raw'             => __( 'Please note that Phone Number icon will show only on mobile devices.', 'premium-addons-for-elementor' ),
 				'type'            => Controls_Manager::RAW_HTML,
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
-				'condition'   => array(
+				'condition'       => array(
 					'multiple_social_enable' => 'yes',
 				),
 			)
@@ -1153,8 +1153,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-person-name' => 'color: {{VALUE}};',
@@ -1166,7 +1166,7 @@ class Premium_Person extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'name_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-person-name',
 			)
 		);
@@ -1207,8 +1207,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-person-title' => 'color: {{VALUE}};',
@@ -1220,7 +1220,7 @@ class Premium_Person extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'title_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-person-title',
 			)
 		);
@@ -1273,8 +1273,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-person-content' => 'color: {{VALUE}};',
@@ -1286,7 +1286,7 @@ class Premium_Person extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'description_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-person-content',
 			)
 		);
@@ -1343,8 +1343,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-person-list-item i'  => 'color: {{VALUE}};',
@@ -1358,8 +1358,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-person-list-item:hover i'  => 'color: {{VALUE}}',
@@ -1542,8 +1542,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-persons-container .slick-arrow' => 'color: {{VALUE}};',
@@ -1557,8 +1557,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-persons-container .slick-arrow:hover' => 'color: {{VALUE}};',
@@ -1584,8 +1584,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-persons-container .slick-arrow' => 'background-color: {{VALUE}};',
@@ -1599,8 +1599,8 @@ class Premium_Person extends Widget_Base {
 				'label'     => __( 'Background Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-persons-container .slick-arrow:hover' => 'background-color: {{VALUE}};',

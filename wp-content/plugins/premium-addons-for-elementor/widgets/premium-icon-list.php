@@ -14,8 +14,8 @@ use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Text_Shadow;
@@ -468,8 +468,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Icon/Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-icon-list-wrapper i' => 'color: {{VALUE}}',
@@ -490,8 +490,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Icon/Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} {{CURRENT_ITEM}}  .premium-icon-list-icon-text p' => 'color: {{VALUE}}',
@@ -511,8 +511,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Icon/Text Background', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} {{CURRENT_ITEM}}  .premium-icon-list-icon-text p' => 'background-color: {{VALUE}}',
@@ -531,8 +531,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Title Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} {{CURRENT_ITEM}} .premium-icon-list-text span' => 'color: {{VALUE}}',
@@ -610,8 +610,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Icon/Text Background ', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} {{CURRENT_ITEM}}.premium-icon-list-content:hover .premium-icon-list-icon-text p' => 'background-color: {{VALUE}}',
@@ -1140,8 +1140,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-icon-list-wrapper i , {{WRAPPER}}  .premium-icon-list-icon-text p' => 'color: {{VALUE}}',
@@ -1156,8 +1156,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-icon-list-content:hover .premium-icon-list-wrapper i ,{{WRAPPER}} .premium-icon-list-content:hover  .premium-icon-list-icon-text p' => 'color: {{VALUE}}',
@@ -1212,7 +1212,7 @@ class Premium_Icon_List extends Widget_Base {
 				'name'     => 'text_icon_typography',
 				'label'    => __( 'Typography', 'premium-addons-for-elementor' ),
 				'selector' => ' {{WRAPPER}}  .premium-icon-list-icon-text p',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 			)
 		);
 
@@ -1287,7 +1287,7 @@ class Premium_Icon_List extends Widget_Base {
 				'name'     => 'list_title_typography',
 				'label'    => __( 'Typography', 'premium-addons-for-elementor' ),
 				'selector' => ' {{WRAPPER}}  .premium-icon-list-text span ',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 
 			)
 		);
@@ -1298,8 +1298,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					' {{WRAPPER}}  .premium-icon-list-text span' => 'color: {{VALUE}}',
@@ -1314,8 +1314,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-icon-list-content:hover .premium-icon-list-text span' => 'color: {{VALUE}}',
@@ -1360,7 +1360,7 @@ class Premium_Icon_List extends Widget_Base {
 				'name'     => 'badge_title_typography',
 				'label'    => __( 'Typography', 'premium-addons-for-elementor' ),
 				'selector' => ' {{WRAPPER}}  .premium-icon-list-badge span',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_3,
+				'scheme'   => Typography::TYPOGRAPHY_3,
 			)
 		);
 
@@ -1379,8 +1379,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-icon-list-badge span' => 'color: {{VALUE}}',
@@ -1395,8 +1395,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Background', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'default'   => '#6ec1e4',
 				'selectors' => array(
@@ -1572,8 +1572,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'default'   => '#ddd',
 				'selectors' => array(
@@ -1687,8 +1687,8 @@ class Premium_Icon_List extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'default'   => '#ddd',
 				'selectors' => array(

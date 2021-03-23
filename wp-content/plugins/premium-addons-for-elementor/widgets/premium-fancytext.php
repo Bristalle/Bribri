@@ -9,8 +9,8 @@ namespace PremiumAddons\Widgets;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Text_Shadow;
 
@@ -488,8 +488,8 @@ class Premium_Fancytext extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-fancy-text' => 'color: {{VALUE}};',
@@ -502,7 +502,7 @@ class Premium_Fancytext extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'fancy_text_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-fancy-text-wrapper:not(.auto-fade) .premium-fancy-text, {{WRAPPER}} .premium-fancy-text svg g > text',
 			)
 		);
@@ -536,6 +536,34 @@ class Premium_Fancytext extends Widget_Base {
 				'type'      => Controls_Manager::POPOVER_TOGGLE,
 				'condition' => array(
 					'premium_fancy_text_effect' => 'auto-fade',
+				),
+			)
+		);
+
+		$this->add_control(
+			'stroke_text_color',
+			array(
+				'label'     => __( 'Stroke Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'condition' => array(
+					'premium_fancy_text_effect!' => 'auto-fade',
+				),
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fancy-text' => '-webkit-text-stroke-color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'stroke_width',
+			array(
+				'label'     => __( 'Stroke Width', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::SLIDER,
+				'selectors' => array(
+					'{{WRAPPER}} .premium-fancy-text' => '-webkit-text-stroke-width: {{SIZE}}px',
+				),
+				'condition' => array(
+					'premium_fancy_text_effect!' => 'auto-fade',
 				),
 			)
 		);
@@ -681,8 +709,8 @@ class Premium_Fancytext extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .typed-cursor' => 'color: {{VALUE}};',
@@ -694,7 +722,7 @@ class Premium_Fancytext extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'fancy_text_cursor_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .typed-cursor',
 			)
 		);
@@ -726,8 +754,8 @@ class Premium_Fancytext extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-prefix-text, {{WRAPPER}} .premium-suffix-text' => 'color: {{VALUE}};',
@@ -739,7 +767,7 @@ class Premium_Fancytext extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'prefix_suffix_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-prefix-text, {{WRAPPER}} .premium-suffix-text',
 			)
 		);
@@ -934,7 +962,7 @@ class Premium_Fancytext extends Widget_Base {
 			var effect = settings.premium_fancy_text_effect;
 
 			var fancyTextSettings = {};
-            
+
 			fancyTextSettings.effect = effect;
 
 		if( 'typing' === effect ) {

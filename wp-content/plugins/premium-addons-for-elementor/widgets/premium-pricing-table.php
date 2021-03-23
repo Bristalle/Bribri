@@ -5,7 +5,7 @@
 
 namespace PremiumAddons\Widgets;
 
- // Elementor Classes.
+// Elementor Classes.
 use Elementor\Modules\DynamicTags\Module as TagsModule;
 use Elementor\Icons_Manager;
 use Elementor\Utils;
@@ -13,8 +13,8 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Control_Media;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Box_Shadow;
@@ -32,8 +32,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Pricing_Table extends Widget_Base {
 
-	protected $templateInstance;
-
 	/**
 	 * Get Elementor Helper Instance.
 	 *
@@ -41,7 +39,8 @@ class Premium_Pricing_Table extends Widget_Base {
 	 * @access public
 	 */
 	public function getTemplateInstance() {
-		return $this->templateInstance = Premium_Template_Tags::getInstance();
+		$this->template_instance = Premium_Template_Tags::getInstance();
+		return $this->template_instance;
 	}
 
 	/**
@@ -967,8 +966,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-icon-container i'  => 'color: {{VALUE}};',
@@ -1002,8 +1001,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-icon-container i, {{WRAPPER}} .premium-pricing-icon, {{WRAPPER}} .premium-pricing-image' => 'background-color: {{VALUE}};',
@@ -1147,8 +1146,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-table-title'  => 'color: {{VALUE}};',
@@ -1160,7 +1159,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'title_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-table-title',
 			)
 		);
@@ -1239,8 +1238,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-slashed-price-value'  => 'color: {{VALUE}};',
@@ -1252,7 +1251,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'slashed_price_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-slashed-price-value',
 			)
 		);
@@ -1283,8 +1282,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-price-currency'  => 'color: {{VALUE}};',
@@ -1297,7 +1296,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			array(
 				'label'    => __( 'Typography', 'premium-addons-for-elementor' ),
 				'name'     => 'currency_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-price-currency',
 			)
 		);
@@ -1357,8 +1356,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-price-value'  => 'color: {{VALUE}};',
@@ -1373,7 +1372,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			array(
 				'label'    => __( 'Typography', 'premium-addons-for-elementor' ),
 				'name'     => 'price_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-price-value',
 			)
 		);
@@ -1405,8 +1404,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-price-separator'  => 'color: {{VALUE}};',
@@ -1421,7 +1420,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			array(
 				'label'    => __( 'Typography', 'premium-addons-for-elementor' ),
 				'name'     => 'separator_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-price-separator',
 			)
 		);
@@ -1460,8 +1459,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-price-duration'  => 'color: {{VALUE}};',
@@ -1476,7 +1475,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			array(
 				'label'    => __( 'Typography', 'premium-addons-for-elementor' ),
 				'name'     => 'duration_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-price-duration',
 			)
 		);
@@ -1572,8 +1571,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-list-span'  => 'color: {{VALUE}};',
@@ -1585,7 +1584,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'list_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-list .premium-pricing-list-span',
 			)
 		);
@@ -1605,8 +1604,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-feature-icon'  => 'color: {{VALUE}};',
@@ -1800,7 +1799,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'tooltips_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-list-tooltip',
 			)
 		);
@@ -1854,8 +1853,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-description-container'  => 'color: {{VALUE}};',
@@ -1867,7 +1866,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'description_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-description-container',
 			)
 		);
@@ -1939,8 +1938,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-price-button'  => 'color: {{VALUE}};',
@@ -1954,8 +1953,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Hover Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-price-button:hover'  => 'color: {{VALUE}};',
@@ -1967,7 +1966,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'button_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-price-button',
 			)
 		);
@@ -2151,8 +2150,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-pricing-badge-container .corner span'  => 'color: {{VALUE}};',
@@ -2164,7 +2163,7 @@ class Premium_Pricing_Table extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'badge_text_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-pricing-badge-container .corner span',
 			)
 		);
@@ -2175,8 +2174,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-badge-triangle.premium-badge-left .corner'  => 'border-top-color: {{VALUE}}',
@@ -2194,8 +2193,8 @@ class Premium_Pricing_Table extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-badge-circle, {{WRAPPER}} .premium-badge-stripe .corner, {{WRAPPER}} .premium-badge-flag .corner'  => 'background-color: {{VALUE}}',

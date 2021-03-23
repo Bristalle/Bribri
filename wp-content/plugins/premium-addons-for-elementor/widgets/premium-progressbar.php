@@ -1,8 +1,8 @@
 <?php
-
 /**
  * Premium Progress Bar.
  */
+
 namespace PremiumAddons\Widgets;
 
 // Elementor Classes.
@@ -11,8 +11,8 @@ use Elementor\Utils;
 use Elementor\Controls_Manager;
 use Elementor\Icons_Manager;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
@@ -29,28 +29,72 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Progressbar extends Widget_Base {
 
+	/**
+	 * Retrieve Widget Name.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function get_name() {
 		return 'premium-addon-progressbar';
 	}
 
+	/**
+	 * Retrieve Widget Title.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function get_title() {
 		return sprintf( '%1$s %2$s', Helper_Functions::get_prefix(), __( 'Progress Bar', 'premium-addons-for-elementor' ) );
 	}
 
+	/**
+	 * Retrieve Widget Icon.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string widget icon.
+	 */
 	public function get_icon() {
 		return 'pa-progress-bar';
 	}
 
+	/**
+	 * Retrieve Widget Categories.
+	 *
+	 * @since 1.5.1
+	 * @access public
+	 *
+	 * @return array Widget categories.
+	 */
 	public function get_categories() {
 		return array( 'premium-elements' );
 	}
 
+	/**
+	 * Retrieve Widget Dependent CSS.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array CSS style handles.
+	 */
 	public function get_style_depends() {
 		return array(
 			'premium-addons',
 		);
 	}
 
+	/**
+	 * Retrieve Widget Dependent JS.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array JS script handles.
+	 */
 	public function get_script_depends() {
 		return array(
 			'elementor-waypoints',
@@ -59,10 +103,25 @@ class Premium_Progressbar extends Widget_Base {
 		);
 	}
 
+	/**
+	 * Retrieve Widget Keywords.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string Widget keywords.
+	 */
 	public function get_keywords() {
 		return array( 'circle', 'chart', 'line' );
 	}
 
+	/**
+	 * Retrieve Widget Support URL.
+	 *
+	 * @access public
+	 *
+	 * @return string support URL.
+	 */
 	public function get_custom_help_url() {
 		return 'https://premiumaddons.com/support/';
 	}
@@ -570,8 +629,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Border Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-progressbar-circle-base' => 'border-color: {{VALUE}};',
@@ -608,8 +667,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Select Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'condition' => array(
 					'layout_type' => 'circle',
@@ -679,8 +738,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-progressbar-left-label' => 'color: {{VALUE}};',
@@ -692,7 +751,7 @@ class Premium_Progressbar extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'left_label_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-progressbar-left-label',
 			)
 		);
@@ -724,8 +783,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-progressbar-right-label' => 'color: {{VALUE}};',
@@ -737,7 +796,7 @@ class Premium_Progressbar extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'right_label_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-progressbar-right-label',
 			)
 		);
@@ -773,8 +832,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Labels\' Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-progressbar-center-label' => 'color: {{VALUE}};',
@@ -787,7 +846,7 @@ class Premium_Progressbar extends Widget_Base {
 			array(
 				'label'    => __( 'Labels\' Typography', 'premium-addons-for-elementor' ),
 				'name'     => 'more_label_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-progressbar-center-label',
 			)
 		);
@@ -798,8 +857,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Percentage Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'condition' => array(
 					'premium_progress_bar_space_percentage_switcher' => 'yes',
@@ -818,7 +877,7 @@ class Premium_Progressbar extends Widget_Base {
 				'condition' => array(
 					'premium_progress_bar_space_percentage_switcher' => 'yes',
 				),
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .premium-progressbar-percentage',
 			)
 		);
@@ -843,8 +902,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Color', 'premium_elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'condition' => array(
 					'premium_progressbar_select_label_icon' => 'arrow',
@@ -890,8 +949,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'condition' => array(
 					'premium_progressbar_select_label_icon' => 'line_pin',
@@ -951,8 +1010,8 @@ class Premium_Progressbar extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-progressbar-circle-icon' => 'color: {{VALUE}};',
@@ -1087,69 +1146,73 @@ class Premium_Progressbar extends Widget_Base {
 
 		?>
 
-   <div <?php echo $this->get_render_attribute_string( 'progressbar' ); ?>>
+	<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'progressbar' ) ); ?>>
 
-		<?php if ( $settings['premium_progressbar_select_label'] === 'left_right_labels' ) : ?>
-			<p class="premium-progressbar-left-label"><span <?php echo $this->get_render_attribute_string( 'premium_progressbar_left_label' ); ?>><?php echo $settings['premium_progressbar_left_label']; ?></span></p>
-			<p class="premium-progressbar-right-label"><span <?php echo $this->get_render_attribute_string( 'premium_progressbar_right_label' ); ?>><?php echo $settings['premium_progressbar_right_label']; ?></span></p>
+		<?php if ( 'left_right_labels' === $settings['premium_progressbar_select_label'] ) : ?>
+			<p class="premium-progressbar-left-label">
+				<span <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_progressbar_left_label' ) ); ?>><?php echo wp_kses_post( $settings['premium_progressbar_left_label'] ); ?></span>
+			</p>
+			<p class="premium-progressbar-right-label">
+				<span <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_progressbar_right_label' ) ); ?>><?php echo wp_kses_post( $settings['premium_progressbar_right_label'] ); ?></span>
+			</p>
 		<?php endif; ?>
 
-		<?php if ( $settings['premium_progressbar_select_label'] === 'more_labels' ) : ?>
+		<?php if ( 'more_labels' === $settings['premium_progressbar_select_label'] ) : ?>
 			<div class="premium-progressbar-container-label" style="position:relative;">
 			<?php
 			foreach ( $settings['premium_progressbar_multiple_label'] as $item ) {
-				if ( $this->get_settings( 'premium_progressbar_more_labels_align' ) === 'center' ) {
-					if ( $settings['premium_progress_bar_space_percentage_switcher'] === 'yes' ) {
-						if ( $settings['premium_progressbar_select_label_icon'] === 'arrow' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
-						} elseif ( $settings['premium_progressbar_select_label_icon'] === 'line_pin' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
+				if ( 'center' === $this->get_settings( 'premium_progressbar_more_labels_align' ) ) {
+					if ( 'yes' === $settings['premium_progress_bar_space_percentage_switcher'] ) {
+						if ( 'arrow' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
+						} elseif ( 'line_pin' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
 						} else {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p></div>';
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p></div>' );
 						}
 					} else {
-						if ( $settings['premium_progressbar_select_label_icon'] === 'arrow' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . '</p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
-						} elseif ( $settings['premium_progressbar_select_label_icon'] === 'line_pin' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%)">' . $item['text'] . '</p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
+						if ( 'arrow' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . '</p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
+						} elseif ( 'line_pin' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%)">' . $item['text'] . '</p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
 						} else {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . '</p></div>';
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-45%);">' . $item['text'] . '</p></div>' );
 						}
 					}
-				} elseif ( $this->get_settings( 'premium_progressbar_more_labels_align' ) === 'left' ) {
-					if ( $settings['premium_progress_bar_space_percentage_switcher'] === 'yes' ) {
-						if ( $settings['premium_progressbar_select_label_icon'] === 'arrow' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-10%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
-						} elseif ( $settings['premium_progressbar_select_label_icon'] === 'line_pin' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-2%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
+				} elseif ( 'left' === $this->get_settings( 'premium_progressbar_more_labels_align' ) ) {
+					if ( 'yes' === $settings['premium_progress_bar_space_percentage_switcher'] ) {
+						if ( 'arrow' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-10%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
+						} elseif ( 'line_pin' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-2%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
 						} else {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-2%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p></div>';
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-2%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p></div>' );
 						}
 					} else {
-						if ( $settings['premium_progressbar_select_label_icon'] === 'arrow' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-10%);">' . $item['text'] . '</p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
-						} elseif ( $settings['premium_progressbar_select_label_icon'] === 'line_pin' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-2%);">' . $item['text'] . '</p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
+						if ( 'arrow' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-10%);">' . $item['text'] . '</p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
+						} elseif ( 'line_pin' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-2%);">' . $item['text'] . '</p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
 						} else {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-2%);">' . $item['text'] . '</p></div>';
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-2%);">' . $item['text'] . '</p></div>' );
 						}
 					}
 				} else {
-					if ( $settings['premium_progress_bar_space_percentage_switcher'] === 'yes' ) {
-						if ( $settings['premium_progressbar_select_label_icon'] === 'arrow' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-82%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
-						} elseif ( $settings['premium_progressbar_select_label_icon'] === 'line_pin' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-95%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
+					if ( 'yes' === $settings['premium_progress_bar_space_percentage_switcher'] ) {
+						if ( 'arrow' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-82%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
+						} elseif ( 'line_pin' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-95%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
 						} else {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-96%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p></div>';
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-96%);">' . $item['text'] . ' <span class="premium-progressbar-percentage">' . $item['number'] . '%</span></p></div>' );
 						}
 					} else {
-						if ( $settings['premium_progressbar_select_label_icon'] === 'arrow' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-71%);">' . $item['text'] . '</p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
-						} elseif ( $settings['premium_progressbar_select_label_icon'] === 'line_pin' ) {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-97%);">' . $item['text'] . '</p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>';
+						if ( 'arrow' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-71%);">' . $item['text'] . '</p><p class="premium-progressbar-arrow" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
+						} elseif ( 'line_pin' === $settings['premium_progressbar_select_label_icon'] ) {
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-97%);">' . $item['text'] . '</p><p class="premium-progressbar-pin" style="left:' . $item['number'] . '%; transform:translateX(50%);"></p></div>' );
 						} else {
-							echo '<div class ="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-96%);">' . $item['text'] . '</p></div>';
+							echo wp_kses_post( '<div class="premium-progressbar-multiple-label" style="left:' . $item['number'] . '%;"><p class = "premium-progressbar-center-label" style="transform:translateX(-96%);">' . $item['text'] . '</p></div>' );
 						}
 					}
 				}
@@ -1159,7 +1222,7 @@ class Premium_Progressbar extends Widget_Base {
 		<?php endif; ?>
 
 		<div class="clearfix"></div>
-		<div <?php echo $this->get_render_attribute_string( 'wrap' ); ?>>
+		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'wrap' ) ); ?>>
 			<?php if ( 'line' === $type ) : ?>
 				<div class="premium-progressbar-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
 			<?php elseif ( 'circle' === $type ) : ?>
@@ -1181,19 +1244,19 @@ class Premium_Progressbar extends Widget_Base {
 							);
 						elseif ( 'image' === $icon_type ) :
 							?>
-							<img class="premium-progressbar-circle-icon" src="<?php echo $settings['image_upload']['url']; ?>">
+							<img class="premium-progressbar-circle-icon" src="<?php echo esc_attr( $settings['image_upload']['url'] ); ?>">
 						<?php else : ?>
-							<div <?php echo $this->get_render_attribute_string( 'progress_lottie' ); ?>></div>
+							<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'progress_lottie' ) ); ?>></div>
 						<?php endif; ?>
 					<?php endif; ?>
 				<p class="premium-progressbar-left-label">
-					<span <?php echo $this->get_render_attribute_string( 'premium_progressbar_left_label' ); ?>>
-						<?php echo $settings['premium_progressbar_left_label']; ?>
+					<span <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_progressbar_left_label' ) ); ?>>
+						<?php echo wp_kses_post( $settings['premium_progressbar_left_label'] ); ?>
 					</span>
 				</p>
 				<?php if ( 'yes' === $settings['show_percentage_value'] ) : ?>
 					<p class="premium-progressbar-right-label">
-						<span <?php echo $this->get_render_attribute_string( 'premium_progressbar_right_label' ); ?>>0%</span>
+						<span <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_progressbar_right_label' ) ); ?>>0%</span>
 					</p>
 				<?php endif; ?>
 				</div>

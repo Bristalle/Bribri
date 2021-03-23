@@ -11,8 +11,8 @@ use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Image_Size;
 use Elementor\Repeater;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
@@ -653,6 +653,40 @@ class Premium_Blog extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'shape_divider',
+			array(
+				'label'       => __( 'Shape Divider', 'premium-addons-for-elementor' ),
+				'type'        => Controls_Manager::SELECT,
+				'options'     => array(
+					'none'             => __( 'None', 'premium-addons-for-elementor' ),
+					'arrow'            => __( 'Arrow', 'premium-addons-for-elementor' ),
+					'book'             => __( 'Book', 'premium-addons-for-elementor' ),
+					'cloud'            => __( 'Clouds', 'premium-addons-for-elementor' ),
+					'curve'            => __( 'Curve', 'premium-addons-for-elementor' ),
+					'curve-asymmetric' => __( 'Curve Asymmetric', 'premium-addons-for-elementor' ),
+					'drops'            => __( 'Drop', 'premium-addons-for-elementor' ),
+					'fan'              => __( 'Fan', 'premium-addons-for-elementor' ),
+					'mountain'         => __( 'Mountains', 'premium-addons-for-elementor' ),
+					'pyramids'         => __( 'Pyramids', 'premium-addons-for-elementor' ),
+					'split'            => __( 'Split', 'premium-addons-for-elementor' ),
+					'triangle'         => __( 'Triangle', 'premium-addons-for-elementor' ),
+					'tri_asymmetric'   => __( 'Asymmetric Triangle', 'premium-addons-for-elementor' ),
+					'tilt'             => __( 'Tilt', 'premium-addons-for-elementor' ),
+					'tilt-opacity'     => __( 'Tilt Opacity', 'premium-addons-for-elementor' ),
+					'waves'            => __( 'Wave', 'premium-addons-for-elementor' ),
+					'waves-brush'      => __( 'Waves Brush', 'premium-addons-for-elementor' ),
+					'waves-pattern'    => __( 'Waves Pattern', 'premium-addons-for-elementor' ),
+					'zigzag'           => __( 'Zigzag', 'premium-addons-for-elementor' ),
+				),
+				'default'     => 'none',
+				'label_block' => true,
+				'condition'   => array(
+					'show_featured_image' => 'yes',
+				),
+			)
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -691,6 +725,27 @@ class Premium_Blog extends Widget_Base {
 				'type'      => Controls_Manager::SWITCHER,
 				'default'   => 'yes',
 				'condition' => array(
+					'premium_blog_skin' => 'cards',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'author_img_position',
+			array(
+				'label'      => __( 'Author Image Position', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px' ),
+				'range'      => array(
+					'px' => array(
+						'min' => -100,
+						'max' => 100,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-blog-author-thumbnail' => 'top: {{SIZE}}{{UNIT}}',
+				),
+				'condition'  => array(
 					'premium_blog_skin' => 'cards',
 				),
 			)
@@ -1350,7 +1405,7 @@ class Premium_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_blog_filter_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-blog-filters-container li a.category',
 			)
 		);
@@ -1370,8 +1425,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-filters-container li a.category span' => 'color: {{VALUE}};',
@@ -1385,8 +1440,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-filters-container li a.category' => 'background-color: {{VALUE}};',
@@ -1430,8 +1485,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-filters-container li a.active span' => 'color: {{VALUE}};',
@@ -1445,8 +1500,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-filters-container li a.active' => 'background-color: {{VALUE}};',
@@ -1553,8 +1608,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Border Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'condition' => array(
 					'premium_blog_hover_color_effect' => 'bordered',
@@ -1582,6 +1637,127 @@ class Premium_Blog extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'divider_heading',
+			array(
+				'label'     => __( 'Shape Divider', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => array(
+					'show_featured_image' => 'yes',
+					'shape_divider!'      => 'none',
+				),
+			)
+		);
+
+		$this->add_control(
+			'divider_fill_color',
+			array(
+				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .premium-blog-masked .premium-blog-thumbnail-container svg' => 'fill: {{VALUE}}',
+				),
+				'condition' => array(
+					'show_featured_image' => 'yes',
+					'shape_divider!'      => 'none',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'divider_width',
+			array(
+				'label'      => __( 'Width', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 1000,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-blog-masked .premium-blog-thumbnail-container svg'  => 'width: {{SIZE}}{{UNIT}}',
+				),
+				'condition'  => array(
+					'show_featured_image' => 'yes',
+					'shape_divider!'      => 'none',
+					'premium_blog_skin'   => 'modern',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'divider_height',
+			array(
+				'label'      => __( 'Height', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 300,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-blog-masked .premium-blog-thumbnail-container svg'  => 'height: {{SIZE}}{{UNIT}}',
+				),
+				'condition'  => array(
+					'show_featured_image' => 'yes',
+					'shape_divider!'      => 'none',
+				),
+			)
+		);
+
+		$is_rtl = is_rtl() ? 'right' : 'left';
+
+		$this->add_responsive_control(
+			'divider_horizontal',
+			array(
+				'label'      => __( 'Horizontal Postion', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'range'      => array(
+					'px' => array(
+						'min' => 0,
+						'max' => 300,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-blog-masked .premium-blog-thumbnail-container svg'  => $is_rtl . ': {{SIZE}}{{UNIT}}',
+				),
+				'condition'  => array(
+					'show_featured_image' => 'yes',
+					'shape_divider!'      => 'none',
+					'premium_blog_skin'   => 'modern',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'divider_vertical',
+			array(
+				'label'      => __( 'Vertical Postion', 'premium-addons-for-elementor' ),
+				'type'       => Controls_Manager::SLIDER,
+				'size_units' => array( 'px', 'em', '%' ),
+				'range'      => array(
+					'px' => array(
+						'min' => -50,
+						'max' => 300,
+					),
+				),
+				'selectors'  => array(
+					'{{WRAPPER}} .premium-blog-masked .premium-blog-thumbnail-container svg'  => 'bottom: {{SIZE}}{{UNIT}}',
+				),
+				'condition'  => array(
+					'show_featured_image' => 'yes',
+					'shape_divider!'      => 'none',
+					'premium_blog_skin'   => 'modern',
+				),
+			)
+		);
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -1596,7 +1772,7 @@ class Premium_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_blog_title_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-blog-entry-title, {{WRAPPER}} .premium-blog-entry-title a',
 			)
 		);
@@ -1607,8 +1783,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-entry-title a'  => 'color: {{VALUE}};',
@@ -1622,8 +1798,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-entry-title:hover a'  => 'color: {{VALUE}};',
@@ -1661,7 +1837,7 @@ class Premium_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'category_typography',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme'   => Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .premium-blog-cats-container a',
 			)
 		);
@@ -1789,7 +1965,7 @@ class Premium_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_blog_meta_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme'   => Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .premium-blog-meta-data',
 			)
 		);
@@ -1855,8 +2031,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Text Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_3,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_3,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-post-content'  => 'color: {{VALUE}};',
@@ -2111,7 +2287,7 @@ class Premium_Blog extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'premium_blog_tags_typo',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_2,
+				'scheme'   => Typography::TYPOGRAPHY_2,
 				'selector' => '{{WRAPPER}} .premium-blog-post-tags-container',
 			)
 		);
@@ -2122,8 +2298,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-post-tags-container'  => 'color: {{VALUE}}',
@@ -2253,8 +2429,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-pagination-container .page-numbers' => 'color: {{VALUE}};',
@@ -2268,8 +2444,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-pagination-container .page-numbers' => 'background-color: {{VALUE}};',
@@ -2314,8 +2490,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-pagination-container .page-numbers:hover' => 'color: {{VALUE}};',
@@ -2329,8 +2505,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-pagination-container .page-numbers:hover' => 'background-color: {{VALUE}};',
@@ -2375,8 +2551,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-pagination-container span.current' => 'color: {{VALUE}};',
@@ -2390,8 +2566,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-pagination-container span.current' => 'background-color: {{VALUE}};',
@@ -2503,8 +2679,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} ul.slick-dots li' => 'color: {{VALUE}}',
@@ -2518,8 +2694,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Active Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} ul.slick-dots li.slick-active' => 'color: {{VALUE}}',
@@ -2547,8 +2723,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-wrap .slick-arrow' => 'color: {{VALUE}};',
@@ -2574,8 +2750,8 @@ class Premium_Blog extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-blog-wrap .slick-arrow' => 'background-color: {{VALUE}};',
@@ -2771,10 +2947,12 @@ class Premium_Blog extends Widget_Base {
 
 		$infinite = 'yes' === $settings['premium_blog_infinite_scroll'] ? true : false;
 
+		$masked = 'none' !== $settings['shape_divider'] ? 'premium-blog-masked' : '';
+
 		$this->add_render_attribute(
 			'blog',
 			array(
-				'class'         => 'premium-blog-wrap',
+				'class'         => array( 'premium-blog-wrap', $masked ),
 				'data-scroll'   => $after_scroll,
 				'data-infinite' => $infinite,
 			)

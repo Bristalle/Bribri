@@ -1,8 +1,8 @@
 <?php
-
 /**
  * Premium Modal Box.
  */
+
 namespace PremiumAddons\Widgets;
 
 // Elementor Classes.
@@ -11,8 +11,8 @@ use Elementor\Widget_Base;
 use Elementor\Utils;
 use Elementor\Control_Media;
 use Elementor\Controls_Manager;
-use Elementor\Scheme_Color;
-use Elementor\Scheme_Typography;
+use Elementor\Core\Schemes\Color;
+use Elementor\Core\Schemes\Typography;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Css_Filter;
 use Elementor\Group_Control_Typography;
@@ -33,33 +33,81 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Premium_Modalbox extends Widget_Base {
 
-
+	/**
+	 * Get Elementor Helper Instance.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function getTemplateInstance() {
-		return $this->templateInstance = Premium_Template_Tags::getInstance();
+		$this->template_instance = Premium_Template_Tags::getInstance();
+		return $this->template_instance;
 	}
 
+	/**
+	 * Retrieve Widget Name.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function get_name() {
 		return 'premium-addon-modal-box';
 	}
 
+	/**
+	 * Check RTL
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function check_rtl() {
 		return is_rtl();
 	}
 
+	/**
+	 * Retrieve Widget Title.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 */
 	public function get_title() {
 		return sprintf( '%1$s %2$s', Helper_Functions::get_prefix(), __( 'Modal Box', 'premium-addons-for-elementor' ) );
 	}
 
+	/**
+	 * Retrieve Widget Icon.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return string widget icon.
+	 */
 	public function get_icon() {
 		return 'pa-modal-box';
 	}
 
+	/**
+	 * Retrieve Widget Dependent CSS.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array CSS style handles.
+	 */
 	public function get_style_depends() {
 		return array(
 			'premium-addons',
 		);
 	}
 
+	/**
+	 * Retrieve Widget Dependent JS.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @return array JS script handles.
+	 */
 	public function get_script_depends() {
 		return array(
 			'modal-js',
@@ -68,10 +116,25 @@ class Premium_Modalbox extends Widget_Base {
 		);
 	}
 
+	/**
+	 * Retrieve Widget Categories.
+	 *
+	 * @since 1.5.1
+	 * @access public
+	 *
+	 * @return array Widget categories.
+	 */
 	public function get_categories() {
 		return array( 'premium-elements' );
 	}
 
+	/**
+	 * Retrieve Widget Support URL.
+	 *
+	 * @access public
+	 *
+	 * @return string support URL.
+	 */
 	public function get_custom_help_url() {
 		return 'https://premiumaddons.com/support/';
 	}
@@ -789,8 +852,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-trigger-btn, {{WRAPPER}} .premium-modal-trigger-text' => 'color:{{VALUE}};',
@@ -807,8 +870,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-trigger-btn:hover, {{WRAPPER}} .premium-modal-trigger-text:hover' => 'color:{{VALUE}};',
@@ -825,8 +888,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Icon Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-trigger-btn i' => 'color:{{VALUE}};',
@@ -843,8 +906,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Icon Hover Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-trigger-btn:hover i' => 'color:{{VALUE}};',
@@ -859,7 +922,7 @@ class Premium_Modalbox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'selectortext',
-				'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'    => Typography::TYPOGRAPHY_1,
 				'selector'  => '{{WRAPPER}} .premium-modal-trigger-btn, {{WRAPPER}} .premium-modal-trigger-text',
 				'condition' => array(
 					'premium_modal_box_display_on' => array( 'button', 'text' ),
@@ -885,8 +948,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-trigger-btn'   => 'background-color: {{VALUE}};',
@@ -1069,7 +1132,7 @@ class Premium_Modalbox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'headertext',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-modal-box-modal-title',
 			)
 		);
@@ -1256,7 +1319,7 @@ class Premium_Modalbox extends Widget_Base {
 			Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'lowerclose',
-				'scheme'   => Scheme_Typography::TYPOGRAPHY_1,
+				'scheme'   => Typography::TYPOGRAPHY_1,
 				'selector' => '{{WRAPPER}} .premium-modal-box-modal-lower-close',
 			)
 		);
@@ -1298,8 +1361,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-box-modal-lower-close' => 'color: {{VALUE}};',
@@ -1313,8 +1376,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-box-modal-lower-close' => 'background-color: {{VALUE}};',
@@ -1358,8 +1421,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_1,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_1,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-box-modal-lower-close:hover' => 'color: {{VALUE}};',
@@ -1373,8 +1436,8 @@ class Premium_Modalbox extends Widget_Base {
 				'label'     => __( 'Background Color', 'premium-addons-for-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'scheme'    => array(
-					'type'  => Scheme_Color::get_type(),
-					'value' => Scheme_Color::COLOR_2,
+					'type'  => Color::get_type(),
+					'value' => Color::COLOR_2,
 				),
 				'selectors' => array(
 					'{{WRAPPER}} .premium-modal-box-modal-lower-close:hover' => 'background-color: {{VALUE}};',
@@ -1563,6 +1626,17 @@ class Premium_Modalbox extends Widget_Base {
 	}
 
 
+	/**
+	 * Render Header Icon
+	 *
+	 * Render HTML markup for modal header icon.
+	 *
+	 * @since 1.0.0
+	 * @access public
+	 *
+	 * @param boolean $new new icon.
+	 * @param boolean $migrate icon migrated.
+	 */
 	protected function render_header_icon( $new, $migrate ) {
 
 		$settings = $this->get_settings_for_display();
@@ -1573,12 +1647,12 @@ class Premium_Modalbox extends Widget_Base {
 			if ( $new || $migrate ) :
 				Icons_Manager::render_icon( $settings['premium_modal_box_font_icon_updated'], array( 'aria-hidden' => 'true' ) );
 			else : ?>
-				<i <?php echo $this->get_render_attribute_string( 'title_icon' ); ?>></i>
+				<i <?php echo wp_kses_post( $this->get_render_attribute_string( 'title_icon' ) ); ?>></i>
 				<?php
 			endif;
 		} elseif ( 'image' === $header_icon ) {
 			?>
-			<img <?php echo $this->get_render_attribute_string( 'title_icon' ); ?>>
+			<img <?php echo wp_kses_post( $this->get_render_attribute_string( 'title_icon' ) ); ?>>
 			<?php
 		} elseif ( 'animation' === $header_icon ) {
 			$this->add_render_attribute(
@@ -1594,11 +1668,19 @@ class Premium_Modalbox extends Widget_Base {
 				)
 			);
 			?>
-				<div <?php echo $this->get_render_attribute_string( 'header_lottie' ); ?>></div>
+				<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'header_lottie' ) ); ?>></div>
 			<?php
 		}
 	}
 
+	/**
+	 * Render Modal Box widget output on the frontend.
+	 *
+	 * Written in PHP and used to generate the final HTML.
+	 *
+	 * @since 1.0.0
+	 * @access protected
+	 */
 	protected function render() {
 
 		$settings = $this->get_settings_for_display();
@@ -1607,14 +1689,23 @@ class Premium_Modalbox extends Widget_Base {
 
 		$this->add_inline_editing_attributes( 'premium_modal_box_selector_text' );
 
-		$this->add_render_attribute( 'trigger', 'data-toggle', 'premium-modal' );
-
-		$this->add_render_attribute( 'trigger', 'data-target', '#premium-modal-' . $this->get_id() );
+		$this->add_render_attribute(
+			'trigger',
+			array(
+				'data-toggle' => 'premium-modal',
+				'data-target' => '#premium-modal-' . $this->get_id(),
+			)
+		);
 
 		if ( 'button' === $trigger ) {
 			if ( ! empty( $settings['premium_modal_box_button_icon_selection'] ) ) {
-				$this->add_render_attribute( 'icon', 'class', $settings['premium_modal_box_button_icon_selection'] );
-				$this->add_render_attribute( 'icon', 'aria-hidden', 'true' );
+				$this->add_render_attribute(
+					'icon',
+					array(
+						'class'       => $settings['premium_modal_box_button_icon_selection'],
+						'aria-hidden' => 'true',
+					)
+				);
 			}
 
 			$migrated = isset( $settings['__fa4_migrated']['premium_modal_box_button_icon_selection_updated'] );
@@ -1633,12 +1724,16 @@ class Premium_Modalbox extends Widget_Base {
 
 		} elseif ( 'image' === $trigger ) {
 
-			$this->add_render_attribute( 'trigger', 'class', 'premium-modal-trigger-img' );
-
-			$this->add_render_attribute( 'trigger', 'src', $settings['premium_modal_box_image_src']['url'] );
-
 			$alt = Control_Media::get_image_alt( $settings['premium_modal_box_image_src'] );
-			$this->add_render_attribute( 'trigger', 'alt', $alt );
+
+			$this->add_render_attribute(
+				'trigger',
+				array(
+					'class' => 'premium-modal-trigger-img',
+					'src'   => $settings['premium_modal_box_image_src']['url'],
+					'alt'   => $alt,
+				)
+			);
 
 		} elseif ( 'text' === $trigger ) {
 			$this->add_render_attribute( 'trigger', 'class', 'premium-modal-trigger-text' );
@@ -1674,18 +1769,28 @@ class Premium_Modalbox extends Widget_Base {
 			if ( 'fonticon' === $header_icon ) {
 
 				if ( ! empty( $settings['premium_modal_box_font_icon'] ) ) {
-					$this->add_render_attribute( 'title_icon', 'class', $settings['premium_modal_box_font_icon'] );
-					$this->add_render_attribute( 'title_icon', 'aria-hidden', 'true' );
+					$this->add_render_attribute(
+						'title_icon',
+						array(
+							'class'       => $settings['premium_modal_box_font_icon'],
+							'aria-hidden' => 'true',
+						)
+					);
 				}
 
 				$header_migrated = isset( $settings['__fa4_migrated']['premium_modal_box_font_icon_updated'] );
 				$header_new      = empty( $settings['premium_modal_box_font_icon'] ) && Icons_Manager::is_migration_allowed();
 			} elseif ( 'image' === $header_icon ) {
 
-				$this->add_render_attribute( 'title_icon', 'src', $settings['premium_modal_box_image_icon']['url'] );
-
 				$alt = Control_Media::get_image_alt( $settings['premium_modal_box_image_icon'] );
-				$this->add_render_attribute( 'title_icon', 'alt', $alt );
+
+				$this->add_render_attribute(
+					'title_icon',
+					array(
+						'src' => $settings['premium_modal_box_image_icon']['url'],
+						'alt' => $alt,
+					)
+				);
 
 			}
 		}
@@ -1698,86 +1803,92 @@ class Premium_Modalbox extends Widget_Base {
 			$modal_settings['delay'] = $settings['premium_modal_box_popup_delay'];
 		}
 
-		$this->add_render_attribute( 'modal', 'class', array( 'container', 'premium-modal-box-container' ) );
-
-		$this->add_render_attribute( 'modal', 'data-settings', wp_json_encode( $modal_settings ) );
-
-		$this->add_render_attribute( 'dialog', 'class', 'premium-modal-box-modal-dialog' );
+		$this->add_render_attribute(
+			'modal',
+			array(
+				'class'         => array( 'container', 'premium-modal-box-container' ),
+				'data-settings' => wp_json_encode( $modal_settings ),
+			)
+		);
 
 		$animation_class = $settings['premium_modal_box_animation'];
-		if ( '' != $settings['premium_modal_box_animation_duration'] ) {
+		if ( '' !== $settings['premium_modal_box_animation_duration'] ) {
 			$animation_dur = 'animated-' . $settings['premium_modal_box_animation_duration'];
 		} else {
 			$animation_dur = 'animated-';
 		}
+
 		$this->add_render_attribute(
 			'dialog',
-			'data-modal-animation',
 			array(
-				$animation_class,
-				$animation_dur,
+				'class'                => 'premium-modal-box-modal-dialog',
+				'data-delay-animation' => $settings['premium_modal_box_animation_delay'],
+				'data-modal-animation' => array(
+					$animation_class,
+					$animation_dur,
+				),
 			)
 		);
 
-		$this->add_render_attribute( 'dialog', 'data-delay-animation', $settings['premium_modal_box_animation_delay'] );
-
 		?>
 
-		<div <?php echo $this->get_render_attribute_string( 'modal' ); ?>>
+		<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'modal' ) ); ?>>
 			<div class="premium-modal-trigger-container">
 				<?php
 				if ( 'button' === $trigger ) :
 					?>
-					<button <?php echo $this->get_render_attribute_string( 'trigger' ); ?>>
+					<button <?php echo wp_kses_post( $this->get_render_attribute_string( 'trigger' ) ); ?>>
 						<?php
-						if ( 'yes' === $settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] === 'before' ) :
+						if ( 'yes' === $settings['premium_modal_box_icon_switcher'] && 'before' === $settings['premium_modal_box_icon_position'] ) :
 							if ( $is_new || $migrated ) :
 								Icons_Manager::render_icon( $settings['premium_modal_box_button_icon_selection_updated'], array( 'aria-hidden' => 'true' ) );
 							else :
 								?>
-								<i <?php echo $this->get_render_attribute_string( 'icon' ); ?>></i>
+								<i <?php echo wp_kses_post( $this->get_render_attribute_string( 'icon' ) ); ?>></i>
 								<?php
 						endif;
 						endif;
 						?>
-						<span><?php echo $settings['premium_modal_box_button_text']; ?></span>
+						<span><?php echo wp_kses_post( $settings['premium_modal_box_button_text'] ); ?></span>
 						<?php
-						if ( 'yes' === $settings['premium_modal_box_icon_switcher'] && $settings['premium_modal_box_icon_position'] === 'after' ) :
+						if ( 'yes' === $settings['premium_modal_box_icon_switcher'] && 'after' === $settings['premium_modal_box_icon_position'] ) :
 							if ( $is_new || $migrated ) :
 								Icons_Manager::render_icon( $settings['premium_modal_box_button_icon_selection_updated'], array( 'aria-hidden' => 'true' ) );
 							else :
 								?>
-								<i <?php echo $this->get_render_attribute_string( 'icon' ); ?>></i>
+								<i <?php echo wp_kses_post( $this->get_render_attribute_string( 'icon' ) ); ?>></i>
 								<?php
 						endif;
 						endif;
 						?>
 					</button>
-				<?php elseif ( $trigger === 'image' ) : ?>
-					<img <?php echo $this->get_render_attribute_string( 'trigger' ); ?>>
-				<?php elseif ( $trigger === 'text' ) : ?>
-					<span <?php echo $this->get_render_attribute_string( 'trigger' ); ?>>
-						<div <?php echo $this->get_render_attribute_string( 'premium_modal_box_selector_text' ); ?>><?php echo $settings['premium_modal_box_selector_text']; ?></div>
+				<?php elseif ( 'image' === $trigger ) : ?>
+					<img <?php echo wp_kses_post( $this->get_render_attribute_string( 'trigger' ) ); ?>>
+				<?php elseif ( 'text' === $trigger ) : ?>
+					<span <?php echo wp_kses_post( $this->get_render_attribute_string( 'trigger' ) ); ?>>
+						<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'premium_modal_box_selector_text' ) ); ?>>
+							<?php echo wp_kses_post( $settings['premium_modal_box_selector_text'] ); ?>
+						</div>
 					</span>
-				<?php elseif ( $trigger === 'animation' ) : ?>
-					<div <?php echo $this->get_render_attribute_string( 'trigger' ); ?>></div>
+				<?php elseif ( 'animation' === $trigger ) : ?>
+					<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'trigger' ) ); ?>></div>
 				<?php endif; ?>
 			</div>
 
-			<div id="premium-modal-<?php echo $this->get_id(); ?>" class="premium-modal-box-modal" role="dialog">
-				<div <?php echo $this->get_render_attribute_string( 'dialog' ); ?>>
+			<div id="premium-modal-<?php echo esc_attr( $this->get_id() ); ?>" class="premium-modal-box-modal" role="dialog">
+				<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'dialog' ) ); ?>>
 					<div class="premium-modal-box-modal-content">
-						<?php if ( $settings['premium_modal_box_header_switcher'] === 'yes' ) : ?>
+						<?php if ( 'yes' === $settings['premium_modal_box_header_switcher'] ) : ?>
 							<div class="premium-modal-box-modal-header">
 								<?php if ( ! empty( $settings['premium_modal_box_title'] ) ) : ?>
 									<h3 class="premium-modal-box-modal-title">
 										<?php
-										$this->render_header_icon( $header_new, $header_migrated );
-										echo $settings['premium_modal_box_title'];
+											$this->render_header_icon( $header_new, $header_migrated );
+											echo wp_kses_post( $settings['premium_modal_box_title'] );
 										?>
 									</h3>
 								<?php endif; ?>
-								<?php if ( $settings['premium_modal_box_upper_close'] === 'yes' ) : ?>
+								<?php if ( 'yes' === $settings['premium_modal_box_upper_close'] ) : ?>
 									<div class="premium-modal-box-close-button-container">
 										<button type="button" class="premium-modal-box-modal-close" data-dismiss="premium-modal">&times;</button>
 									</div>
@@ -1786,17 +1897,17 @@ class Premium_Modalbox extends Widget_Base {
 						<?php endif; ?>
 						<div class="premium-modal-box-modal-body">
 							<?php
-							if ( $settings['premium_modal_box_content_type'] === 'editor' ) :
-								echo $this->parse_text_editor( $settings['premium_modal_box_content'] );
+							if ( 'editor' === $settings['premium_modal_box_content_type'] ) :
+								echo wp_kses_post( $this->parse_text_editor( $settings['premium_modal_box_content'] ) );
 							else :
 								echo $this->getTemplateInstance()->get_template_content( $template ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 							endif;
 							?>
 						</div>
-						<?php if ( $settings['premium_modal_box_lower_close'] === 'yes' ) : ?>
+						<?php if ( 'yes' === $settings['premium_modal_box_lower_close'] ) : ?>
 							<div class="premium-modal-box-modal-footer">
 								<button type="button" class="premium-modal-box-modal-lower-close" data-dismiss="premium-modal">
-									<?php echo $settings['premium_modal_close_text']; ?>
+									<?php echo wp_kses_post( $settings['premium_modal_close_text'] ); ?>
 								</button>
 							</div>
 						<?php endif; ?>
@@ -1809,8 +1920,8 @@ class Premium_Modalbox extends Widget_Base {
 			if ( ! empty( $settings['premium_modal_box_modal_size']['size'] ) ) :
 				echo '@media (min-width: 992px) {';
 				?>
-				#premium-modal-<?php echo $this->get_id(); ?> .premium-modal-box-modal-dialog {
-				width: <?php echo $settings['premium_modal_box_modal_size']['size'] . $settings['premium_modal_box_modal_size']['unit']; ?>
+				#premium-modal-<?php echo esc_attr( $this->get_id() ); ?> .premium-modal-box-modal-dialog {
+				width: <?php echo esc_attr( $settings['premium_modal_box_modal_size']['size'] . $settings['premium_modal_box_modal_size']['unit'] ); ?>
 			}
 				<?php
 				echo '}';
